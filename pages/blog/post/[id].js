@@ -370,7 +370,7 @@ const Post = ({id,comments, userBookmark}) => {
       }
       async function fetchData() {
         const currentUser = decode(localStorage.getItem('accessToken'))
-        const userBookmark = await fetch(`http://localhost:4001/bookmarks/${id.data[0].id}/${userJWT.id}`)
+        const userBookmark = await fetch(`https://mysqlnodeblogapp.herokuapp.com/bookmarks/${id.data[0].id}/${userJWT.id}`)
         const userBookmarkData = await userBookmark.json()
         setBookmarkId(userBookmarkData.result.length === 0 ? null : userBookmarkData.result[0].id)
         setUserBookmarked(userBookmarkData.result.length === 0 ? false : userBookmarkData.result.some(id => id.user_id === currentUser.id))
@@ -411,7 +411,7 @@ const Post = ({id,comments, userBookmark}) => {
     const postId = id.data[0].id
 
 
-    await axios.delete(`http://localhost:4001/blog/delete/${postId}`)
+    await axios.delete(`https://mysqlnodeblogapp.herokuapp.com/blog/delete/${postId}`)
     router.push('/')
   }
 
@@ -429,7 +429,7 @@ const Post = ({id,comments, userBookmark}) => {
       const userId = currentUser.id
       const blogId = id.data[0].id
       const time = new window.Date()
-      await axios.post('http://localhost:4001/bookmarks/add',{
+      await axios.post('https://mysqlnodeblogapp.herokuapp.com/bookmarks/add',{
         userId:userId,
         blogId:blogId,
         time:time,
@@ -442,7 +442,7 @@ const Post = ({id,comments, userBookmark}) => {
     }
 
       // Apply logic to remove bookmark from users bookmarks
-      await axios.delete(`http://localhost:4001/bookmarks/delete/${bookmarkId}`)
+      await axios.delete(`https://mysqlnodeblogapp.herokuapp.com/bookmarks/delete/${bookmarkId}`)
         .then((res)=>{
           setUserBookmarked(false)
         })
@@ -568,11 +568,11 @@ export async function getServerSideProps(context){
   const { id } = context.query;
 
   // Fetch blog id to load onto page
-  const blogRes = await fetch(`http://localhost:4001/blog/${id}`)
+  const blogRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/blog/${id}`)
   const blogData = await blogRes.json()
 
   // Fetch comments from blog id
-  const commentRes = await fetch(`http://localhost:4001/comments/blog/${id}`)
+  const commentRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/comments/blog/${id}`)
   const commentData = await commentRes.json()
 
 

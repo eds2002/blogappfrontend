@@ -272,7 +272,7 @@ const UserBlogs = () => {
     }
     const fetchData = async () =>{
       const currentUser = decode(localStorage.getItem('accessToken'))
-      const userBlogsRes = await fetch(`http://localhost:4001/blog/all/${currentUser.id}`);
+      const userBlogsRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/blog/all/${currentUser.id}`);
       const userBlogsData = await userBlogsRes.json()
       setBlogsArr(userBlogsData.result)
     }
@@ -297,14 +297,14 @@ const UserBlogs = () => {
   const changeBlogStatus = async (blogId, status,index) =>{
     // If current status is true/ x>=1 (PUBLISHED), add logic to update status to 0 or false
     if(status >= 1){
-      await axios.patch(`http://localhost:4001/blog/status/${blogId}/0`)
+      await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/status/${blogId}/0`)
         .then((res)=>{
           blogsArray[index].status = 0
           setBlogsArr([...blogsArray])
         })
     }else{
       // Update status to true, published
-      await axios.patch(`http://localhost:4001/blog/status/${blogId}/1`)
+      await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/status/${blogId}/1`)
         .then((res)=>{
           blogsArray[index].status = 1
           setBlogsArr([...blogsArray])

@@ -260,7 +260,7 @@ const UserSettings = ({currentUser}) => {
         }
         const fetchData = async () =>{
             let currentUser = decode(localStorage.getItem('accessToken'))
-            const profileUserRes = await fetch(`http://localhost:4001/user/profile/${currentUser.id}`)
+            const profileUserRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/user/profile/${currentUser.id}`)
             const profileUserData = await profileUserRes.json()
             console.log(profileUserData.result)
             setFirstName(profileUserData.result[0].first_name)
@@ -293,7 +293,7 @@ const UserSettings = ({currentUser}) => {
         setUserChanges(true)
     }
 
-    axios.get(`http://localhost:4001/user/username/${username}`)
+    axios.get(`https://mysqlnodeblogapp.herokuapp.com/user/username/${username}`)
     .then((res)=>{
         if(res.data.result.length === 0){
             setUsernameTaken(false)
@@ -306,7 +306,7 @@ const UserSettings = ({currentUser}) => {
         if(firstName === '' || lastName === '' || username === ''){
             return 
         }
-        axios.patch(`http://localhost:4001/user/settings/${firstName}/${lastName}/${username}/${user.id}`)
+        axios.patch(`https://mysqlnodeblogapp.herokuapp.com/user/settings/${firstName}/${lastName}/${username}/${user.id}`)
             .then((res)=>{
                 router.reload()
         })
@@ -317,7 +317,7 @@ const UserSettings = ({currentUser}) => {
     }
 
     const handleUserDelete = (userId) =>{
-        axios.delete(`http://localhost:4001/user/delete/${userId}`)
+        axios.delete(`https://mysqlnodeblogapp.herokuapp.com/user/delete/${userId}`)
             .then(()=>{
                 localStorage.clear()
                 router.push('/')

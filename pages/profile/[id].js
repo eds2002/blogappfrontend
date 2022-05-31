@@ -206,11 +206,11 @@ export async function getServerSideProps(context) {
   const {id} = context.query
 
   // Getting the requsted users blog data
-  const profileBlogsRes = await fetch(`http://localhost:4001/profile/blogs/${id}`)
+  const profileBlogsRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/profile/blogs/${id}`)
   const profileBlogsData = await profileBlogsRes.json()
 
   // Getting the requested users profile data
-  const profileUserRes = await fetch(`http://localhost:4001/user/profile/${id}`)
+  const profileUserRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/user/profile/${id}`)
   const profileUserData = await profileUserRes.json()
   if(profileUserData.result.length != 0){
     return {props:{userBlogs:profileBlogsData.result, userProfile: profileUserData.result}}

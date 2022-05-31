@@ -304,7 +304,7 @@ const Create = () => {
       const date = new window.Date();
 
 
-      await axios.post('http://localhost:4001/blog/create', {
+      await axios.post('https://mysqlnodeblogapp.herokuapp.com/blog/create', {
         userId:userId,
         text:dbText,
         title:title,
@@ -368,7 +368,7 @@ const Create = () => {
       const date = new window.Date();
 
 
-      await axios.post('http://localhost:4001/blog/create', {
+      await axios.post('https://mysqlnodeblogapp.herokuapp.com/blog/create', {
         userId:userId,
         text:dbText,
         title:title,

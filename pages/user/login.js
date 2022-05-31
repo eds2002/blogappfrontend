@@ -26,7 +26,7 @@ const Login = () => {
 
     const email = e.target.email.value
     const password = e.target.password.value
-    await axios.post('http://localhost:4001/user/login',{
+    await axios.post('https://mysqlnodeblogapp.herokuapp.com/user/login',{
       email:email,
       password:password,
     },{withCredentials: true})

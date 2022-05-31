@@ -133,7 +133,7 @@ export default All
 
 export async function getServerSideProps({req,res}) {
   const jwt = req.cookies.userToken || null
-  const allBlogsRes = await fetch('http://localhost:4001/blog')
+  const allBlogsRes = await fetch('https://mysqlnodeblogapp.herokuapp.com/blog')
   const allBlogsData = await allBlogsRes.json()
   try{
       verify(jwt, process.env.JWT_SECRET)

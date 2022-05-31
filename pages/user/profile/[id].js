@@ -243,14 +243,14 @@ const UserProfile = ({currentUser, userBlogs}) => {
   const changeBlogStatus = async (blogId, status,index) =>{
     // If current status is true/ x>=1 (PUBLISHED), add logic to update status to 0 or false
     if(status >= 1){
-      await axios.patch(`http://localhost:4001/blog/status/${blogId}/0`)
+      await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/status/${blogId}/0`)
         .then((res)=>{
           blogsArray[index].status = 0
           setBlogsArr([...blogsArray])
         })
     }else{
       // Update status to true, published
-      await axios.patch(`http://localhost:4001/blog/status/${blogId}/1`)
+      await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/status/${blogId}/1`)
         .then((res)=>{
           blogsArray[index].status = 1
           setBlogsArr([...blogsArray])
@@ -347,7 +347,7 @@ export async function getServerSideProps({req,res}) {
         try{
             verify(jwt, process.env.JWT_SECRET)
             const user = decode(jwt)
-            const userBlogsRes = await fetch(`http://localhost:4001/blog/all/${user.id}`);
+            const userBlogsRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/blog/all/${user.id}`);
             const userBlogsData = await userBlogsRes.json()
 
             return{props: {currentUser:decode(jwt), userBlogs: userBlogsData}}

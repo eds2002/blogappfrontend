@@ -35,10 +35,10 @@ const Signup = () => {
     }
     setPassError(false)
 
-    await axios.get(`http://localhost:4001/user/username/${username}`)
+    await axios.get(`https://mysqlnodeblogapp.herokuapp.com/user/username/${username}`)
       .then((result)=>{
         if(result.data.result.length === 0){
-          axios.post('http://localhost:4001/user/signup',{
+          axios.post('https://mysqlnodeblogapp.herokuapp.com/user/signup',{
           email: email,
           password: password,
           firstName: firstName,

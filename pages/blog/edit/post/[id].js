@@ -297,7 +297,7 @@ const Edit = ({user,editBlog}) => {
         const dbText = JSON.stringify([...previousText,...textArr]); // Combining previous user text with new text if any
         const blogId = editBlog.data[0].id
         const dateModified = new window.Date()
-        await axios.patch(`http://localhost:4001/blog/edit/${blogId}`, {
+        await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/edit/${blogId}`, {
           text:dbText,
           title:title,
           authorNotes:notes,
@@ -339,7 +339,7 @@ const Edit = ({user,editBlog}) => {
       const dbText = JSON.stringify([...previousText,...textArr]); // Combining previous user text with new text if any
       const blogId = editBlog.data[0].id
       const dateModified = new window.Date()
-      await axios.patch(`http://localhost:4001/blog/edit/${blogId}`, {
+      await axios.patch(`https://mysqlnodeblogapp.herokuapp.com/blog/edit/${blogId}`, {
         text:dbText,
         title:title,
         authorNotes:notes,
@@ -422,7 +422,7 @@ export default Edit
 
 export async function getServerSideProps(context) {
     const id = context.query
-    const blogRes = await fetch(`http://localhost:4001/blog/${id.id}`)
+    const blogRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/blog/${id.id}`)
     const blogData = await blogRes.json()
     return{props: {editBlog: blogData}}
 }

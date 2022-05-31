@@ -34,7 +34,7 @@ export default function Home({featured}) {
 }
 
 export async function getServerSideProps({req,res}) {
-    const blogRes = await fetch(`http://localhost:4001/blog/38`)
+    const blogRes = await fetch(`https://dashboard.heroku.com/blog/38`)
     const blogData = await blogRes.json()
     return{props: {featured: blogData.data}}
 }

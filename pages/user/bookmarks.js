@@ -133,13 +133,13 @@ const Bookmarks = () => {
     const fetchData = async () =>{
       const currentUser = decode(localStorage.getItem('accessToken'))
       // Fetch bookmarks
-      const bookmarkRes = await fetch(`http://localhost:4001/bookmarks/${currentUser.id}`)
+      const bookmarkRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/bookmarks/${currentUser.id}`)
       const bookmarkData = await bookmarkRes.json()
       let result = bookmarkData.result.map(bookmark => ({ id: bookmark.blog_id}));
       const arrData = JSON.stringify(result)
         
       // Fetch blogs
-      const blogsRes = await fetch(`http://localhost:4001/blog/getall/${arrData}`)
+      const blogsRes = await fetch(`https://mysqlnodeblogapp.herokuapp.com/blog/getall/${arrData}`)
       const blogsData = await blogsRes.json()
       setBookmarksArr(blogsData.result)
       console.log(blogsData)
@@ -151,7 +151,7 @@ const Bookmarks = () => {
   const removeBookmark = async (id) =>{
     // Update usestate by using filter to remove necessary obj
     setBookmarksArr(bookmarksArr.filter(arr => arr.id != id))
-    await axios.delete(`http://localhost:4001/bookmarks/remove/${id}`)
+    await axios.delete(`https://mysqlnodeblogapp.herokuapp.com/bookmarks/remove/${id}`)
       .then((res)=>{
       })
   }
