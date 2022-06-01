@@ -3,7 +3,7 @@ import {verify} from 'jsonwebtoken'
 import {useState,useEffect} from 'react'
 import axios from 'axios';
 import { useRouter } from 'next/router'
-import {Navbar} from '../../components/'
+import {Navbar} from '../../components'
 axios.defaults.withCredentials = true
 
 const Signup = () => {

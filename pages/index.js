@@ -23,7 +23,6 @@ export default function Home({featured}) {
       }
     }
   },[])
-  console.log(process.env.JWT_SECRET)
   return (
     <Container>
       <Navbar signed = {logged} user = {user} page = "home"/>
