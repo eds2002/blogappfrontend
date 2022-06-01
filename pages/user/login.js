@@ -13,7 +13,7 @@ const Login = () => {
   useEffect(()=>{
     let userJWT = localStorage.getItem('accessToken')
     if(userJWT){
-      if(verify(userJWT, 'thisisafakecookie')){
+      if(verify(userJWT, process.env.JWT_SECRET)){
         router.push('/')
       }
     }

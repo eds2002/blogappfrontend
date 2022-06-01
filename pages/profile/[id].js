@@ -147,7 +147,7 @@ const Profile = ({userBlogs,userProfile}) => {
   useEffect(()=>{
     let userJWT = localStorage.getItem('accessToken')
     if(userJWT){
-      if(verify(userJWT, 'thisisafakecookie')){
+      if(verify(userJWT, process.env.JWT_SECRET)){
         setUser(decode(userJWT))
         setLogged(true)
       }

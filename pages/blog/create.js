@@ -221,7 +221,7 @@ const Create = () => {
     const [logged, setLogged] = useState(false);
     useEffect(()=>{
       let userJWT = localStorage.getItem('accessToken')
-      if(verify(userJWT, 'thisisafakecookie')){
+      if(verify(userJWT, process.env.JWT_SECRET)){
         setUser(decode(userJWT))
         setLogged(true)
       }

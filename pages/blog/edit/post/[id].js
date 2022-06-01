@@ -222,7 +222,7 @@ const Edit = ({user,editBlog}) => {
     const router = useRouter();
     useEffect(()=>{
       let userJWT = localStorage.getItem('accessToken')
-      if(verify(userJWT, 'thisisafakecookie')){
+      if(verify(userJWT, process.env.JWT_SECRET)){
         const currentUser = decode(userJWT)
         if(!currentUser.id === editBlog.data[0].user_id){
           router.push('/404')
