@@ -332,7 +332,7 @@ const UserSettings = ({currentUser}) => {
                 <UserTop>
                     <UserTopWrapper>
                         <UserTopHeading>Settings</UserTopHeading>
-                        <UserTopEmail>eds232323@gmail.com</UserTopEmail>
+                        {/* <UserTopEmail></UserTopEmail> */}
                     </UserTopWrapper>
                     <UserTopViewProfile onClick = {()=>takeToProfile()}>
                         View Profile

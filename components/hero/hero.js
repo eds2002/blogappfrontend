@@ -61,7 +61,8 @@ mb-[10px]
 `
 const Title = tw.p`
 font-bold
-md:text-7xl
+md:text-6xl
+sm:text-4xl
 text-3xl
 hover:text-indigo-600
 transition
